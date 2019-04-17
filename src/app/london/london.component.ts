@@ -8,7 +8,7 @@ import { PeriodicElement } from '../brefft/brefft.component';
 })
 export class LondonComponent implements OnInit {
   sampleArray : Array<PeriodicElement> = [
-    {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
+    {position: 1, name: 'HydrogenX', weight: 1.0079, symbol: 'H'},
     {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
     {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
     {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
@@ -27,10 +27,38 @@ export class LondonComponent implements OnInit {
     {position: 17, name: 'NeonA', weight: 20.1797, symbol: 'Ne'},
     {position: 18, name: 'NeonB', weight: 20.1797, symbol: 'Ne'},
     {position: 19, name: 'NeonC', weight: 20.1797, symbol: 'Ne'},
+    {position: 20, name: 'Neon3', weight: 20.1797, symbol: 'Ne3'},
+    {position: 21, name: 'Neonx3', weight: 20.1797, symbol: 'Ner'},
+    {position: 22, name: 'Neonss3', weight: 20.1797, symbol: 'Net'},
+    {position: 23, name: 'NeonA3', weight: 20.1797, symbol: 'Neu'},
+    {position: 24, name: 'NeonB3', weight: 20.1797, symbol: 'Nei'},
+    {position: 25, name: 'NeonC3', weight: 20.1797, symbol: 'Noe'},
+    {position: 26, name: 'Neons3s', weight: 20.1797, symbol: 'oNe'},
+    {position: 27, name: 'NeonA3', weight: 20.1797, symbol: 'Npe'},
+    {position: 28, name: 'NeonB3', weight: 20.1797, symbol: 'Npe'},
+    {position: 29, name: 'NeonC3', weight: 20.1797, symbol: 'Npe'},
   ];
+  length = 100;
+  pageSize = 10;
+  pageIndex = 0;
+  pageSizeOptions: number[] = [5, 10, 25, 100];
   constructor() { }
 
   ngOnInit() {
+    const test = localStorage.getItem('pagination');
+    if (test){
+      const event = JSON.parse(test);
+      this.pageSize = event.pageSize;
+      this.pageIndex = event.pageIndex;
+    }
+  }
+
+  onPaginateChange(event){
+    this.pageSize = event.pageSize;
+    const test = JSON.stringify(event);
+    console.log(test);
+    localStorage.setItem('pagination',test);
+    this.pageIndex = event.pageIndex;
   }
 
 }

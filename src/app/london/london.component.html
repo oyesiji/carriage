@@ -1,5 +1,5 @@
 <div class="mainDiv">
-<div *ngFor="let element of sampleArray">
+<div *ngFor="let element of sampleArray | paginate: { itemsPerPage: pageSize, currentPage:(pageIndex + 1) }">
   <mat-card class="mat-elevation-z22">
       <mat-card-title><span>{{element.name}}</span></mat-card-title>
 
@@ -8,4 +8,15 @@
 
 
 </div>
+
+<mat-paginator [length]="sampleArray.length"
+              [pageSize]="pageSize"
+              [pageSizeOptions]="pageSizeOptions" 
+              [pageIndex] = "pageIndex"
+              (page)="onPaginateChange($event)">
+</mat-paginator>
+<!--
+<pagination-controls (pageChange)="p = $event"></pagination-controls>
+-->
+
 </div>
