@@ -40,7 +40,7 @@ export class LondonComponent implements OnInit {
   ];
   length = 100;
   pageSize = 5;
-  pageIndex = 1;
+  pageIndex = 0;
   startRecord=0;
   endRecord=5;
   pageSizeOptions: number[] = [5, 10, 25, 100];
