@@ -39,17 +39,19 @@ export class LondonComponent implements OnInit {
     {position: 29, name: 'NeonC3', weight: 20.1797, symbol: 'Npe'},
   ];
   length = 100;
-  pageSize = 10;
-  pageIndex = 0;
+  pageSize = 5;
+  pageIndex = 1;
+  startRecord=0;
+  endRecord=5;
   pageSizeOptions: number[] = [5, 10, 25, 100];
   constructor() { }
 
   ngOnInit() {
     const test = localStorage.getItem('pagination');
     if (test){
-      const event = JSON.parse(test);
-      this.pageSize = event.pageSize;
-      this.pageIndex = event.pageIndex;
+     // const event = JSON.parse(test);
+    //  this.pageSize = event.pageSize;
+    //  this.pageIndex = event.pageIndex;
     }
   }
 
@@ -59,6 +61,10 @@ export class LondonComponent implements OnInit {
     console.log(test);
     localStorage.setItem('pagination',test);
     this.pageIndex = event.pageIndex;
+    this.startRecord = (this.pageIndex-1) * this.pageSize;
+    console.log('###pageIndex'+this.pageIndex);
+    console.log('###startRecord'+this.startRecord);
+    console.log('###length'+this.sampleArray.length);
   }
 
 }

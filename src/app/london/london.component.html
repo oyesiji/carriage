@@ -1,5 +1,5 @@
 <div class="mainDiv">
-<div *ngFor="let element of sampleArray | paginate: { itemsPerPage: pageSize, currentPage:(pageIndex + 1) }">
+<div *ngFor="let element of sampleArray | slice: (pageIndex-1) * pageSize : (pageIndex-1) * pageSize + pageSize">
   <mat-card class="mat-elevation-z22">
       <mat-card-title><span>{{element.name}}</span></mat-card-title>
 

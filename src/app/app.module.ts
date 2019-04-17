@@ -33,7 +33,6 @@ import {NgxPaginationModule} from 'ngx-pagination';
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
-    NgxPaginationModule,
     MatPaginatorModule
   ],
   providers: [],
