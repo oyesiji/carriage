@@ -41,8 +41,6 @@ export class LondonComponent implements OnInit {
   length = 100;
   pageSize = 5;
   pageIndex = 0;
-  startRecord=0;
-  endRecord=5;
   pageSizeOptions: number[] = [5, 10, 25, 100];
   constructor() { }
 
@@ -61,10 +59,6 @@ export class LondonComponent implements OnInit {
     console.log(test);
     localStorage.setItem('pagination',test);
     this.pageIndex = event.pageIndex;
-    this.startRecord = (this.pageIndex-1) * this.pageSize;
-    console.log('###pageIndex'+this.pageIndex);
-    console.log('###startRecord'+this.startRecord);
-    console.log('###length'+this.sampleArray.length);
   }
 
 }
